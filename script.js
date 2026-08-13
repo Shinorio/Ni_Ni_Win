@@ -164,18 +164,6 @@
     btn.addEventListener('click', toggle);
     menu.querySelectorAll('[data-nav-mobile]').forEach(a => a.addEventListener('click', close));
   }
-
-  /* ============================================================
-     Smooth scroll for scroll cue
-     ============================================================ */
-  function initScrollCue(){
-    const cue = document.getElementById('scrollCue');
-    if(!cue) return;
-    cue.addEventListener('click', () => {
-      document.getElementById('about')?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
-  }
-
   /* ============================================================
      Reveal-on-scroll
      ============================================================ */
