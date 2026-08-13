@@ -166,17 +166,6 @@
   }
 
   /* ============================================================
-     Smooth scroll for scroll cue
-     ============================================================ */
-  function initScrollCue(){
-    const cue = document.getElementById('scrollCue');
-    if(!cue) return;
-    cue.addEventListener('click', () => {
-      document.getElementById('about')?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
-  }
-
-  /* ============================================================
      Reveal-on-scroll
      ============================================================ */
   function initReveal(){
