@@ -24,7 +24,7 @@
     ['General Ledger', 'Maintaining accurate and up-to-date general ledger records.'],
     ['Inter-Company Reconciliation', 'Reconciling inter-company transactions and balances.'],
     ['Foreign Currency Accounting', 'Handling multi-currency transactions and accounting entries.'],
-    ['Financial &amp; Profitability Analysis', 'Analyzing financial performance and profitability.'],
+    ['Financial & Profitability Analysis', 'Analyzing financial performance and profitability.'],
     ['Internal Controls', 'Maintaining and following internal control procedures.'],
     ['Audit Support', 'Supporting statutory audit processes with schedules and documentation.'],
     ['VAT / Tax Processes', 'Working knowledge of VAT and tax-related processes.'],
@@ -92,11 +92,9 @@
      ============================================================ */
   function initLoader(){
     const loader = document.getElementById('loader');
-    window.addEventListener('load', () => {
-      setTimeout(() => loader && loader.classList.add('hide'), 350);
-    });
-    // Fallback in case load event already fired
-    setTimeout(() => loader && loader.classList.add('hide'), 2500);
+    if (loader) {
+      setTimeout(() => loader.classList.add('hide'), 350);
+    }
   }
 
   function initScrollProgress(){
@@ -118,6 +116,7 @@
      ============================================================ */
   function initNavbar(){
     const navbar = document.getElementById('navbar');
+    if (!navbar) return;
     const sections = Array.from(document.querySelectorAll('main section[id]'));
     const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
 
@@ -164,6 +163,7 @@
     btn.addEventListener('click', toggle);
     menu.querySelectorAll('[data-nav-mobile]').forEach(a => a.addEventListener('click', close));
   }
+
   /* ============================================================
      Reveal-on-scroll
      ============================================================ */
@@ -191,7 +191,6 @@
     document.querySelectorAll('.exp-toggle').forEach((btn, idx) => {
       const body = btn.parentElement.querySelector('.exp-body');
       if(!body) return;
-      // First item open by default
       if(idx === 0){
         btn.setAttribute('aria-expanded', 'true');
         body.style.maxHeight = body.scrollHeight + 'px';
@@ -202,7 +201,6 @@
         body.style.maxHeight = expanded ? '0px' : body.scrollHeight + 'px';
       });
     });
-    // Recalculate on resize
     window.addEventListener('resize', () => {
       document.querySelectorAll('.exp-toggle[aria-expanded="true"]').forEach(btn => {
         const body = btn.parentElement.querySelector('.exp-body');
@@ -220,7 +218,6 @@
       if(!panel) return;
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
-        // Close others
         document.querySelectorAll('.accordion-head').forEach(other => {
           if(other !== btn){
             other.setAttribute('aria-expanded', 'false');
@@ -308,7 +305,6 @@
     initScrollProgress();
     initNavbar();
     initMobileMenu();
-    initScrollCue();
     initReveal();
     initExperienceToggles();
     initAccordion();
